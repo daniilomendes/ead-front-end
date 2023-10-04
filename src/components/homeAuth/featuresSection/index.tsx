@@ -1,5 +1,5 @@
 //@ts-ignore
-import { Form, FormGroup, Label, Container, Button, Input } from 'reactstrap'
+import { Container, Button } from 'reactstrap'
 import styles from "./styles.module.scss"
 import useSWR from "swr"
 import courseService, { CourseType } from "@/services/courseService"
