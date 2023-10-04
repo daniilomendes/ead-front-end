@@ -78,7 +78,7 @@ const Register = () => {
                             <Input id="phone" name="phone" type="tel" placeholder="(xx) 9xxxx-xxxx" data-mask="[-]+55 (00) 00000-0000" required className={styles.input} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="email" className={styles.label}>EMAIL</Label>
+                            <Label for="email" className={styles.label}>E-MAIL</Label>
                             <Input id="email" name="email" type="email" placeholder="Digite seu e-mail" required className={styles.input} />
                         </FormGroup>
                         <FormGroup>

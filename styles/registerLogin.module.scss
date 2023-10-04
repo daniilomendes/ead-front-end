@@ -73,13 +73,16 @@
 }
 
 @media(max-width: 540) {
-
     .form {
         padding: 50px 10px;
     }
 }
 
 @media(max-width: 450px) {
+    .form {
+        padding: 20px 10px;
+    }
+
     .formTitle {
         font-size: 24px;
         text-align: center;
