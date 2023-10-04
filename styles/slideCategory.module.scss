@@ -1,5 +1,11 @@
-.titleCategory{
+.titleCategory {
     font-size: 24px;
     font-weight: bold;
     margin: 40px 0px 0px 16%;
+}
+
+@media(max-width: 1441px) {
+    .titleCategory {
+        margin: 40px 0px 0px 7%;
+    }
 }

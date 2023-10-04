@@ -1,10 +1,5 @@
-//@ts-ignore
-import { Form, FormGroup, Label, Container, Button, Input } from 'reactstrap'
-
 import useSWR from "swr"
-import courseService, { CourseType } from "@/services/courseService"
-import HeaderAuth from "@/components/common/headerAuth"
-import Link from 'next/link'
+import courseService from "@/services/courseService"
 import SlideComponent from '@/components/common/slideComponent'
 import styles from "../../../../styles/slideCategory.module.scss" 
 
