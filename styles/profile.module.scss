@@ -105,6 +105,8 @@
     font-weight: bold;
     font-size: 15px;
     padding: 6px 20px;
+    display: block;
+    margin: 10px auto;
 
     &:hover {
         border-color: $darkRed;
@@ -130,8 +132,17 @@
 
     &:hover {
         background-color: transparent;
-        border-color: $lightRed;
-        color: $lightGray;
+        color: $lightRed;
+    }
+
+    &:active {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    &:focus {
+        background-color: transparent;
+        box-shadow: none;
     }
 }
 
