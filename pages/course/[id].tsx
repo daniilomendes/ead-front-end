@@ -1,5 +1,5 @@
 //@ts-ignore
-import { Form, FormGroup, Label, Container, Button, Input } from 'reactstrap'
+import {Container, Button} from 'reactstrap'
 import styles from "../../styles/coursePage.module.scss"
 import Head from "next/head"
 import HeaderAuth from "@/components/common/headerAuth"
@@ -105,7 +105,7 @@ const CoursePage = () => {
                         </p>
                     ) : (
                         course?.episodes?.map((episode) => (
-                            <EpisodeList key={episode.id} episode={episode} />
+                            <EpisodeList key={episode.id} episode={episode} course={course}/>
                         ))
                     )}
                 </Container>
