@@ -1,5 +1,5 @@
 //@ts-ignore
-import {Container, Button} from 'reactstrap'
+import { Container, Button } from 'reactstrap'
 import styles from "../../styles/coursePage.module.scss"
 import Head from "next/head"
 import HeaderAuth from "@/components/common/headerAuth"
@@ -15,7 +15,16 @@ const CoursePage = () => {
     const [liked, setLiked] = useState(false)
     const [favorited, setFavorited] = useState(false)
     const router = useRouter()
+    const [loading, setLoanding] = useState(true)
     const { id } = router.query
+
+    useEffect(() => {
+        if (!sessionStorage.getItem("onebitflix-token")) {
+            router.push("/login")
+        } else {
+            setLoanding(false)
+        }
+    }, [])
 
     const getCourse = async () => {
         if (typeof id !== "string") return
@@ -35,7 +44,7 @@ const CoursePage = () => {
     const handleLikeCourse = async () => {
         if (typeof id !== "string") return
 
-        if(liked === true){
+        if (liked === true) {
             await courseService.removeLike(id)
             setLiked(false)
         } else {
@@ -47,7 +56,7 @@ const CoursePage = () => {
     const handleFavCourse = async () => {
         if (typeof id !== "string") return
 
-        if(favorited === true){
+        if (favorited === true) {
             await courseService.removeFav(id)
             setFavorited(false)
         } else {
@@ -56,7 +65,11 @@ const CoursePage = () => {
         }
     }
 
-    if(course === undefined) return <PageSpinner />
+    if (course === undefined) return <PageSpinner />
+
+    if (loading) {
+        return <PageSpinner />
+    }
 
     return (
         <>
@@ -82,16 +95,16 @@ const CoursePage = () => {
                     </Button>
                     <div className={styles.interactions}>
                         {liked === false ? (
-                            <img src="/course/iconLike.svg" alt="likeImage" className={styles.interactionsImage} onClick={handleLikeCourse} /> 
+                            <img src="/course/iconLike.svg" alt="likeImage" className={styles.interactionsImage} onClick={handleLikeCourse} />
                         ) : (
                             <img src="/course/iconLiked.svg" alt="likeImage" className={styles.interactionsImage} onClick={handleLikeCourse} />
                         )}
                         {favorited === false ? (
-                            <img src="/course/iconAddFav.svg" alt="favImage" className={styles.interactionsImage} onClick={handleFavCourse} /> 
+                            <img src="/course/iconAddFav.svg" alt="favImage" className={styles.interactionsImage} onClick={handleFavCourse} />
                         ) : (
-                            <img src="/course/iconFavorited.svg" alt="favImage" className={styles.interactionsImage} onClick={handleFavCourse} /> 
+                            <img src="/course/iconFavorited.svg" alt="favImage" className={styles.interactionsImage} onClick={handleFavCourse} />
                         )}
-                        
+
                     </div>
                 </Container>
                 <Container className={styles.episodeInfo}>
@@ -105,11 +118,11 @@ const CoursePage = () => {
                         </p>
                     ) : (
                         course?.episodes?.map((episode) => (
-                            <EpisodeList key={episode.id} episode={episode} course={course}/>
+                            <EpisodeList key={episode.id} episode={episode} course={course} />
                         ))
                     )}
                 </Container>
-                <Footer/>
+                <Footer />
             </main>
         </>
     )
